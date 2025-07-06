@@ -7,9 +7,14 @@
       "slug": "dashboard",
       "submenu": [
         {
-          "url": "/",
-          "name": "Analytics",
+          "url": "/dashboard",
+          "name": "Analítico",
           "slug": "dashboard-analytics"
+        },
+        {
+          "url": "/plans",
+          "name": "Planos",
+          "slug": "dashboard-plans"
         }
       ]
     }
