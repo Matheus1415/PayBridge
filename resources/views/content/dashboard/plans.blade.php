@@ -39,7 +39,7 @@
                     <p class="text-muted">Ideal para começar</p>
                     <h3 class="text-primary mb-3">R$ 9,90<span class="fs-6">/mês</span></h3>
 
-                    <a href="#" class="btn btn-label-success w-100">Seu plano atual</a>
+                    <a href="{{route('plans-select',['id'=> $prices['monthly']])}}" class="btn btn-primary w-100">Seu plano atual</a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <p class="text-muted">Para pequenos negócios</p>
                     <h3 class="text-primary mb-3">R$ 49<span class="fs-6">/anual</span></h3>
 
-                    <a href="#" class="btn btn-primary w-100">Assinar plano</a>
+                    <a href="{{route('plans-select',['id'=> $prices['yearly']])}}" class="btn btn-primary w-100">Assinar plano</a>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                     <p class="text-muted">Para grandes empresas</p>
                     <h3 class="text-primary mb-3">R$ 99<span class="fs-6">/trianual</span></h3>
 
-                    <a href="#" class="btn btn-label-primary w-100">Assinar plano</a>
+                    <a href="{{route('plans-select',['id'=> $prices['longest']])}}" class="btn btn-primary w-100">Assinar plano</a>
                 </div>
             </div>
         </div>

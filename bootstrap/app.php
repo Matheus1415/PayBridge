@@ -14,7 +14,12 @@ return Application::configure(basePath: dirname(__DIR__))
     $middleware->alias([
       'guest.only' => \App\Http\Middleware\isGuest::class,
     ]);
+
+    $middleware->web([
+        \App\Http\Middleware\VerifyCsrfExcept::class,
+    ]);
   })
+
   ->withExceptions(function (Exceptions $exceptions) {
     //
   })->create();
