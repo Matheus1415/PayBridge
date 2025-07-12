@@ -12,8 +12,29 @@ class Analytics extends Controller
   public function index()
   {
     $user = Auth::user();
+    $data = [];
+
+    $subscription = $user->subscriptions()->active()->first();
+
+    if ($subscription) {
+      $stripeSub = $subscription->asStripeSubscription();
+      $timestamp = $stripeSub->current_period_end;
+
+      $data['subscription_end'] = date('d/m/Y H:i:s', $timestamp);
+      $data['subscription_name'] = $subscription->name;
+      $data['stripe_status'] = $subscription->stripe_status;
+    } else {
+      $data['subscription_end'] = 'Nenhuma assinatura ativa';
+      $data['subscription_name'] = 'N/A';
+      $data['stripe_status'] = 'none';
+    }
+
+    $invoices = $user->invoices()->count();
+
     return view('content.dashboard.dashboards-analytics', [
       'user' => $user,
+      'data' => $data,
+      'invoices' => $invoices,
     ]);
   }
 
@@ -53,6 +74,9 @@ class Analytics extends Controller
 
   public function subscriptionSucess()
   {
-    echo "Inscrição feita com sucesso";
+    $user = auth()->user();
+    return view('content.pages.page-subscription-sucess', [
+      'user' => $user
+    ]);
   }
 }
