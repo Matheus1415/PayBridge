@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Assas\Assas;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Middleware\hasSubscription;
 use App\Http\Middleware\noSubscription;
@@ -11,6 +12,7 @@ Route::middleware('guest.only')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
+    Route::get('/assas', [Assas::class, 'index'])->name('assas.index');
 
     Route::middleware([noSubscription::class])->group(function(){
         Route::get('/plans', [Analytics::class, 'plans'])->name('dashboard-plans');
